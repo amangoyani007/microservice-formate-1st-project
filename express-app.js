@@ -9,6 +9,7 @@ module.exports = async (app) => {
     // app.use(express.urlencoded({ extended: true, limit: '1mb'}));
     // app.use(cors());
     // app.use(express.static(__dirname + '/public'))
+    app.use(express.json())
 
     //api
     mainRoute(app);

@@ -12,6 +12,9 @@ const start = async () => {
     try {
         await expressApp(app);
         await connectDB(process.env.MONGO_URI)
+        // if(connectDB){
+        //     console.log("success")
+        // }
         app.listen(port, console.log(`running on ${port}`))
     } catch (err) {
         console.log(err);
