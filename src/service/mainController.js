@@ -27,6 +27,33 @@ class HomePage {
         // }
     }
 
+    async LogIn(userInputs) {
+        const { email, code } = userInputs;
+
+        // console.log(email);
+        // console.log(code);
+
+        try {
+
+            const EmailExist = await this.repository.FindEmail({ email });
+
+            const codef = EmailExist.code;
+            // console.log(codef);
+
+            if (EmailExist) {
+                const codeVerifi = await this.repository.FindCode({ code, codef });
+
+                if(codeVerifi){
+                    // console.log("code is true");
+                    return EmailExist
+                }
+            }
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
 }
 
 // module.exports = Hello;

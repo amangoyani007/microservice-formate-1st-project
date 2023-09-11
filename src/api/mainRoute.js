@@ -37,6 +37,19 @@ module.exports = (app) => {
             next(err);
         }
     });
+
+    app.post("/login", async (req, res, next) => {
+        try {
+            const { email, code } = req.body;
+            // console.log(email, code, "in post");
+
+            const data = await service.LogIn({ email, code });
+
+            return res.json({ msg: "You are loged in now", data });
+        } catch (err) {
+            next(err);
+        }
+    });
 }
 
 
