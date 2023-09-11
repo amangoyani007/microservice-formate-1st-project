@@ -1,7 +1,10 @@
 const Reg = require('../database/model/model')
 const Log = require('../database/model/loginModel')
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 const { RegistrationWithEmail } = require('../database/repository/registrationRepo')
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 class HomePage {
 
@@ -43,9 +46,9 @@ class HomePage {
             if (EmailExist) {
                 const codeVerifi = await this.repository.FindCode({ code, codef });
 
-                if(codeVerifi){
-                    // console.log("code is true");
-                    return EmailExist.email
+                if (codeVerifi) {
+                    const token = jwt.sign({ email, code }, process.env.JWT_SECRET);
+                    return token
                 }
             }
 
