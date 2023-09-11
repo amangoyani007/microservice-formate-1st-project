@@ -45,7 +45,7 @@ module.exports = (app) => {
 
             const data = await service.LogIn({ email, code });
 
-            return res.json({ msg: "You are loged in now", data });
+            return res.json({ msg: "You are loged in now", data: `email : '${data}'` });
         } catch (err) {
             next(err);
         }

@@ -45,7 +45,7 @@ class HomePage {
 
                 if(codeVerifi){
                     // console.log("code is true");
-                    return EmailExist
+                    return EmailExist.email
                 }
             }
 
